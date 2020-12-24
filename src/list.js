@@ -30,7 +30,8 @@ export default {
             // this.$refs.inputEdit.focus();
         },
         completeEdit: function (e, todo, save) {
-            console.log('🚀 ~ file: list.js ~ line 33 ~ todo', todo);
+            if (!this.editedTodo) return;
+
             if (!e.target.value && save) {
                 this.removeTodo(todo);
             } else if (save) {
@@ -38,7 +39,7 @@ export default {
             }
 
             this.editedTodo = null;
-            // this.$refs[`inputEdit-${todo.id}`].blur();
+            this.$refs[`inputEdit-${todo.id}`].blur();
         },
         editControl: function (e, todo) {
             if (e.code === 'Enter') {
