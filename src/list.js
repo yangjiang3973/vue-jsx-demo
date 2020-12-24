@@ -61,15 +61,13 @@ export default {
                                     completed: todo.done,
                                     editing: todo === this.editedTodo,
                                 }}
+                                key={todo.id}
                             >
                                 <div class="view">
                                     <input
                                         type="checkbox"
                                         class="toggle"
-                                        checked={todo.done}
-                                        onClick={(e) =>
-                                            this.changeState(e, todo)
-                                        }
+                                        vModel={todo.done}
                                     />
                                     <label
                                         onDblclick={() => this.editTodo(todo)}
