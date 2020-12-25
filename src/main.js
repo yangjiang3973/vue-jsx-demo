@@ -6,7 +6,6 @@ import Footer from './footer';
 let vm = new Vue({
     el: '#app',
     data: {
-        title: 'vue jsx',
         todos: [],
         filter: 'all',
     },

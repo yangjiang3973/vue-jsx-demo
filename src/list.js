@@ -41,13 +41,13 @@ export default {
             this.editedTodo = null;
             this.$refs[`inputEdit-${todo.id}`].blur();
         },
-        editControl: function (e, todo) {
-            if (e.code === 'Enter') {
-                this.completeEdit(e, todo, true);
-            } else if (e.code === 'Escape') {
-                this.completeEdit(e, todo, false);
-            }
-        },
+        // editControl: function (e, todo) {
+        //     if (e.code === 'Enter') {
+        //         this.completeEdit(e, todo, true);
+        //     } else if (e.code === 'Escape') {
+        //         this.completeEdit(e, todo, false);
+        //     }
+        // },
     },
     render() {
         return (
@@ -70,13 +70,13 @@ export default {
                                         vModel={todo.done}
                                     />
                                     <label
-                                        onDblclick={() => this.editTodo(todo)}
+                                        vOn:dblclick={() => this.editTodo(todo)}
                                     >
                                         {todo.text}
                                     </label>
                                     <button
                                         class="destroy"
-                                        onClick={() => this.removeTodo(todo)}
+                                        vOn:Click={() => this.removeTodo(todo)}
                                     ></button>
                                 </div>
                                 <input
@@ -84,10 +84,15 @@ export default {
                                     class="edit"
                                     ref={`inputEdit-${todo.id}`}
                                     value={todo.text}
-                                    onBlur={(e) =>
+                                    vOn:blur={(e) =>
                                         this.completeEdit(e, todo, true)
                                     }
-                                    onKeyup={(e) => this.editControl(e, todo)}
+                                    vOn:keyup_enter={(e) =>
+                                        this.completeEdit(e, todo, true)
+                                    }
+                                    vOn:keyup_esc={(e) => {
+                                        this.completeEdit(e, todo, false);
+                                    }}
                                 />
                             </li>
                         );

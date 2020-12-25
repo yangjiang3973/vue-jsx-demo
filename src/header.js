@@ -7,10 +7,8 @@ export default {
     },
     methods: {
         inputTodo: function (e) {
-            if (e.code === 'Enter' && e.target.value) {
-                this.addTodo(e.target.value);
-                e.target.value = '';
-            }
+            this.addTodo(e.target.value);
+            e.target.value = '';
         },
     },
     render() {
@@ -23,7 +21,7 @@ export default {
                     autocomplete="off"
                     type="text"
                     placeholder="What needs to be done?"
-                    onKeyup={this.inputTodo}
+                    vOn:keyup_enter={this.inputTodo}
                 />
             </header>
         );
